@@ -55,6 +55,16 @@ class UserTestCase(unittest.TestCase):
         self.new_user.delete_user()  # deletes user
         self.assertEqual(len(User.list_of_users), 1)
 
+    def test_user_check(self):
+        """
+        Test to check if user exists in list of users
+        :return: user
+        """
+        self.new_user.add_user()
+        test_user = User("test", "pswd12")
+        test_user.add_user()
+        user_exists = User.user_check("test", "pswd12")
+        self.assertTrue(user_exists)
 
 if __name__ == '__main__':
     unittest.main()

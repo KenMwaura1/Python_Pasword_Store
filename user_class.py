@@ -36,5 +36,17 @@ class User:
         """
         return cls.list_of_users
 
-
+    @classmethod
+    def user_check(cls, u_name: str, password: str):
+        """
+        method to check whether user is our list of users
+        :param u_name:
+        :param password:
+        :return: user if in the list
+        """
+        user_test = None
+        for user in User.list_of_users:
+            if user.username == u_name and user.password == password:
+                user_test = user.username
+        return user_test
 
