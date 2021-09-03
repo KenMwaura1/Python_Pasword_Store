@@ -6,12 +6,20 @@ class UserTestCase(unittest.TestCase):
     """
     class to define test cases for the User class
     """
+
     def setUp(self):
         """
         method to creates a new user that runs before the rest of the tests
         :return: new user
         """
         self.new_user = User("Zoo", "password123")
+
+    def tearDown(self):
+        """
+        test method to cleanup after each test is run
+        :return: empty list of users
+        """
+        User.list_of_users = []
 
     def test_user_init(self):
         """
@@ -35,6 +43,17 @@ class UserTestCase(unittest.TestCase):
         :return: list of contacts
         """
         self.assertEqual(User.display_all_users(), User.list_of_users)
+
+    def test_delete_contact(self):
+        """
+        Test whether we can remove a user from the list of users.
+        :return: True if we can remove the contact
+        """
+        self.new_user.add_user()
+        test_delete_user = User("Test", "passwd12")  # new user
+        test_delete_user.add_user()
+        self.new_user.delete_user()  # deletes user
+        self.assertEqual(len(User.list_of_users), 1)
 
 
 if __name__ == '__main__':

@@ -20,6 +20,14 @@ class User:
         """
         User.list_of_users.append(self)
 
+    def delete_user(self):
+        """
+        remove user from the current list of users
+        :return: removed user
+        """
+        User.list_of_users.remove(self)
+        return f"{self} removed from the list"
+
     @classmethod
     def display_all_users(cls):
         """
@@ -27,3 +35,6 @@ class User:
         :return: list of users
         """
         return cls.list_of_users
+
+
+
