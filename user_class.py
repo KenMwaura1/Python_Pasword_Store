@@ -12,3 +12,10 @@ class User:
         """
         self.username = username
         self.password = password
+
+    def add_user(self):
+        """
+        User method to add user to list of users
+        :return: list of users
+        """
+        User.list_of_users.append(self)
