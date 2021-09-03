@@ -7,6 +7,7 @@ class Credentials:
     """
     Class to model and instantiate new credentials
     """
+    list_of_credentials = []
 
     def __init__(self, username, password, account):
         """
