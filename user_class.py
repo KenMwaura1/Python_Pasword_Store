@@ -19,3 +19,11 @@ class User:
         :return: list of users
         """
         User.list_of_users.append(self)
+
+    @classmethod
+    def display_all_users(cls):
+        """
+        method to display users currently in the list of users
+        :return: list of users
+        """
+        return cls.list_of_users
