@@ -23,6 +23,23 @@ def save_user(new_user: User):
     new_user.add_user()
 
 
+def show_user():
+    """
+    function to show existing users
+    :return: existing users
+    """
+    return User.display_all_users()
+
+
+def user_login(username: str, password: str):
+    """
+    function to login user once its confirmed they exist
+    :param username: str
+    :param password: str
+    :return: verified user
+    """
+    user_test = User.user_check(username, password)
+
 
 def main():
     """
