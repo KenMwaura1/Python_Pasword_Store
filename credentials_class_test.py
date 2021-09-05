@@ -1,4 +1,7 @@
 import unittest
+
+import pyperclip
+
 from credentials_class import Credentials
 
 
@@ -75,7 +78,18 @@ class CredentialsTestCase(unittest.TestCase):
         test_find_credentials = Credentials("zoocodes", "pwsds123", "Twitter")
         test_find_credentials.save_credentials()
         found_credential = Credentials.search_credentials("Twitter")
-        self.assertEqual(found_credential, test_find_credentials.account)
+        self.assertEqual(found_credential.account, test_find_credentials.account)
+
+    def test_copy_password(self):
+        """
+        Test to see we can copy password from list_of_credentials
+        :return: Bool: True
+        """
+        self.new_credential.save_credentials()
+        test_copy_password = Credentials("test", "pswd123", "LinkedIn")
+        test_copy_password.save_credentials()
+        found_password = test_copy_password.copy_credentials_password("LinkedIn")
+        self.assertEqual(test_copy_password.password, pyperclip.paste())
 
 
 if __name__ == '__main__':

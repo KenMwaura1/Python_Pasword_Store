@@ -50,4 +50,14 @@ class Credentials:
         """
         for credential in cls.list_of_credentials:
             if credential.account == search_credentials:
-                return credential.account
+                return credential
+
+    @classmethod
+    def copy_credentials_password(cls, account_name: str):
+        """
+        Method to copy password to clipboard once found in list of credentials.
+        :param account_name: str
+        :return: password copied to clipboard.
+        """
+        found_credential = cls.search_credentials(account_name)
+        pyperclip.copy(found_credential.password)
