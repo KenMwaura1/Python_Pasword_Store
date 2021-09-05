@@ -14,6 +14,15 @@ def create_new_user(username: str, password: str):
     return User(username, password)
 
 
+def save_user(new_user: User):
+    """
+    function to save new user to the list of users
+    :param new_user: User
+    :return: user added to list of users
+    """
+    new_user.add_user()
+
+
 
 def main():
     """
