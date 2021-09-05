@@ -104,9 +104,15 @@ class CredentialsTestCase(unittest.TestCase):
 
     def test_credential_exist(self):
         """
-        Test to check if specified
-        :return:
+        Test to check if specified credential exists in list_of_credentials
+        :return: bool True if credential exists, False otherwise.
         """
+        self.new_credential.save_credentials()
+        test_credential_exist = Credentials("Test", "toughpswd123", "Twitter")
+        test_credential_exist.save_credentials()
+        credential_exist = test_credential_exist.credential_exists("Twitter")
+        self.assertTrue(credential_exist)
+
 
 if __name__ == '__main__':
     unittest.main()
