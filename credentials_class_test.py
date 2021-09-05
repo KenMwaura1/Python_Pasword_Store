@@ -125,6 +125,5 @@ class CredentialsTestCase(unittest.TestCase):
         self.assertEqual(len(Credentials.list_of_credentials), 2)
 
 
-
 if __name__ == '__main__':
     unittest.main()
