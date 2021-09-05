@@ -66,5 +66,17 @@ class CredentialsTestCase(unittest.TestCase):
         """
         self.assertEqual(Credentials.display_credentials(), Credentials.list_of_credentials)
 
+    def test_find_credentials(self):
+        """
+        Test to find credentials in list_of_credentials from account passed as search string
+        :return: Bool: True if account matches the one in the list
+        """
+        self.new_credential.save_credentials()
+        test_find_credentials = Credentials("zoocodes", "pwsds123", "Twitter")
+        test_find_credentials.save_credentials()
+        found_credential = Credentials.search_credentials("Twitter")
+        self.assertEqual(found_credential, test_find_credentials.account)
+
+
 if __name__ == '__main__':
     unittest.main()

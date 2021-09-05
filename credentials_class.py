@@ -40,3 +40,14 @@ class Credentials:
         :return: list of credentials
         """
         return cls.list_of_credentials
+
+    @classmethod
+    def search_credentials(cls, search_credentials: str):
+        """
+        method that takes the account (search_credentials) and searches for matching account in the list of credentials.
+        :param search_credentials: str
+        :return: credential if found in the list
+        """
+        for credential in cls.list_of_credentials:
+            if credential.account == search_credentials:
+                return credential.account
