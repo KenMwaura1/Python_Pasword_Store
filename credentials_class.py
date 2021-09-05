@@ -81,3 +81,20 @@ class Credentials:
         """
         for credential in cls.list_of_credentials:
             return credential.account == account_name
+
+    @classmethod
+    def password_generator(cls, self=None):
+        """
+        method to generate a password using a combination of random characters consisting of digits, letters and special characters.
+        :return: generated password
+        """
+        # if user specifies the length, its used.
+        if self:
+            password_length = self
+        else:
+            default_password_length = 10 # if no length is supplied the default is used
+            password_length = default_password_length
+
+        generator = string.ascii_lowercase + string.ascii_uppercase + string.digits + "~%!@^#$&*"
+        password = "".join(random.choice(generator) for x in range(password_length))
+        return password

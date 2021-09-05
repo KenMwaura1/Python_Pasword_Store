@@ -113,6 +113,18 @@ class CredentialsTestCase(unittest.TestCase):
         credential_exist = test_credential_exist.credential_exists("Twitter")
         self.assertTrue(credential_exist)
 
+    def test_password_generator(self):
+        """
+        Test for  random password generator
+        :return: bool True if generator works
+        """
+        self.new_credential.save_credentials()
+        test_password_generator = Credentials("Test", Credentials.password_generator(), "LinkedIn")
+        test_password_generator.save_credentials()
+        print(test_password_generator.password)
+        self.assertEqual(len(Credentials.list_of_credentials), 2)
+
+
 
 if __name__ == '__main__':
     unittest.main()
