@@ -38,7 +38,27 @@ def user_login(username: str, password: str):
     :param password: str
     :return: verified user
     """
-    user_test = User.user_check(username, password)
+    return User.user_check(username, password)
+
+
+def create_new_credentials(username: str, password: str, account_name: str):
+    """
+    function to create new credentials for specified user
+    :param username: string
+    :param password: string
+    :param account_name: string
+    :return: new credentials
+    """
+    return Credentials(username, password, account_name)
+
+
+def save_credentials(credentials: Credentials):
+    """
+    function to save credentials to list of credentials
+    :param credentials:
+    :return: updated credentials list
+    """
+    credentials.save_credentials()
 
 
 def main():
