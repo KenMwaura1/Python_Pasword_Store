@@ -61,6 +61,22 @@ def save_credentials(credentials: Credentials):
     credentials.save_credentials()
 
 
+def display_credentials():
+    """
+    function to display saved credentials
+    :return: list of saved credentials
+    """
+    return Credentials.display_credentials()
+
+
+def delete_credentials(credentials):
+    """
+    function to delete credentials from list of credentials
+    :param credentials:
+    :return: delete_credentials
+    """
+    Credentials.delete_credentials(credentials)
+
 def main():
     """
 
