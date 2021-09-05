@@ -47,7 +47,18 @@ class CredentialsTestCase(unittest.TestCase):
         test_credential_delete = Credentials("Zoo", "pwd1234", "Twitter")
         test_credential_delete.save_credentials()
         self.new_credential.delete_credentials()
-        self.assertEqual(len(Credentials.list_of_credentials),1)
+        self.assertEqual(len(Credentials.list_of_credentials), 1)
+
+    def test_credentials_save_multiple_credentials(self):
+        """
+        Test if can add multiple credentials to the list of credentials.
+        :return: Bool: True if we can add multiple credentials to the list of credentials
+        """
+        self.new_credential.save_credentials()
+        test_credentials_save_multiple_credentials = Credentials("Zoov", "pxz1234", "Instagram")
+        test_credentials_save_multiple_credentials.save_credentials()
+        self.assertEqual(len(Credentials.list_of_credentials), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
