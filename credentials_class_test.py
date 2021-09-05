@@ -91,6 +91,22 @@ class CredentialsTestCase(unittest.TestCase):
         found_password = test_copy_password.copy_credentials_password("LinkedIn")
         self.assertEqual(test_copy_password.password, pyperclip.paste())
 
+    def test_copy_username(self):
+        """
+        Test to confirm we can copy the username from the list_of_credentials
+        :return: bool True
+        """
+        self.new_credential.save_credentials()
+        test_copy_username = Credentials("test", "pswd123", "Facebook")
+        test_copy_username.save_credentials()
+        found_username = test_copy_username.copy_credentials_username("Facebook")
+        self.assertEqual(test_copy_username.username, pyperclip.paste())
+
+    def test_credential_exist(self):
+        """
+        Test to check if specified
+        :return:
+        """
 
 if __name__ == '__main__':
     unittest.main()

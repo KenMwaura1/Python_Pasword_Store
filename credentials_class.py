@@ -61,3 +61,23 @@ class Credentials:
         """
         found_credential = cls.search_credentials(account_name)
         pyperclip.copy(found_credential.password)
+
+    @classmethod
+    def copy_credentials_username(cls, account_name: str):
+        """
+        method to copy username to clipboard if it matches the one ib the list of credentials.
+        :param account_name: str
+        :return: username copied to clipboard
+        """
+        found_credential = cls.search_credentials(account_name)
+        pyperclip.copy(found_credential.username)
+
+    @classmethod
+    def credential_exists(cls, account_name: str):
+        """
+        Method to check if a credential exists in the list of credentials.
+        :param account_name: str
+        :return: bool: True if it exists, False otherwise.
+        """
+        for credential in cls.list_of_credentials:
+            return credential.account == account_name
