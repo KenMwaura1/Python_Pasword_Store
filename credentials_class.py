@@ -16,3 +16,11 @@ class Credentials:
         self.account = account
         self.username = username
         self.password = password
+
+    def save_credentials(self):
+        """
+        method to store credentials in the list of credentials.
+        :return: updated list of credentials
+        """
+        Credentials.list_of_credentials.append(self)
+        return Credentials.list_of_credentials
