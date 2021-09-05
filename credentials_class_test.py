@@ -38,5 +38,16 @@ class CredentialsTestCase(unittest.TestCase):
         self.new_credential.save_credentials()
         self.assertEqual(len(Credentials.list_of_credentials), 1)
 
+    def test_credential_delete_(self):
+        """
+        Test to check if we can remove account credentials from list of credentials
+        :return: Bool: True
+        """
+        self.new_credential.save_credentials()
+        test_credential_delete = Credentials("Zoo", "pwd1234", "Twitter")
+        test_credential_delete.save_credentials()
+        self.new_credential.delete_credentials()
+        self.assertEqual(len(Credentials.list_of_credentials),1)
+
 if __name__ == '__main__':
     unittest.main()

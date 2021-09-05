@@ -24,3 +24,11 @@ class Credentials:
         """
         Credentials.list_of_credentials.append(self)
         return Credentials.list_of_credentials
+
+    def delete_credentials(self):
+        """
+        method to remove credentials from list of credentials.
+        :return: removed credentials
+        """
+        Credentials.list_of_credentials.remove(self)
+        return f"{self} account credentials removed"
