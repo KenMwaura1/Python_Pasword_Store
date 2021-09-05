@@ -59,6 +59,12 @@ class CredentialsTestCase(unittest.TestCase):
         test_credentials_save_multiple_credentials.save_credentials()
         self.assertEqual(len(Credentials.list_of_credentials), 2)
 
+    def test_display_credentials(self):
+        """
+        Test to return the credentials currently in list_of_credentials
+        :return: current credentials saved
+        """
+        self.assertEqual(Credentials.display_credentials(), Credentials.list_of_credentials)
 
 if __name__ == '__main__':
     unittest.main()

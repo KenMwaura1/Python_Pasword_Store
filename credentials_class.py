@@ -32,3 +32,11 @@ class Credentials:
         """
         Credentials.list_of_credentials.remove(self)
         return f"{self} account credentials removed"
+
+    @classmethod
+    def display_credentials(cls):
+        """
+        method to credentials currently in the list of credentials.
+        :return: list of credentials
+        """
+        return cls.list_of_credentials
