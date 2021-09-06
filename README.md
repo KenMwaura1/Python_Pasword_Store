@@ -1,7 +1,7 @@
 # Python_Password_Store
-a password locker cli program to store account details, a login username and password. You can also generate a password.
+a password locker cli program to store account details, a login username and password. also, a password generator.
 
-![screenshot of program](assets/Screenshot 2021-09-06 14:01:02.png)
+![](assets/Screenshot 2021-09-06 14:01:02.png)
 
 ## Author
 
@@ -37,12 +37,12 @@ The user would like to.... :
 * `chmod +x main.py`
 * `./main.py`
 
-## Showcase
-![working-program](assets/python-password-2.gif)
-
 ### To execute tests 
 * `python3 credentials_class_test.py`
 * `python3 user_class_test.py`
+
+## Showcase
+![](assets/python-password-2.gif)
 
 ## Known Errors
 pressing enter on default_password_length breaks the app. 
