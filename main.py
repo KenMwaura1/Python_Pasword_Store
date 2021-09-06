@@ -125,11 +125,37 @@ def username_copy(account_name: str):
 
 def main():
     """
-
+    main function to display texts and accepts inputs.
     :return:
     """
     typer.secho("Zoo Password Locker", fg=typer.colors.BRIGHT_MAGENTA,
                 underline=True, bold=True, blink=True, reverse=True)
+
+    typer.secho("Welcome to Zoo Password Locker \n \n Please type one of following shortcodes: \n"
+                f"CU " + '-' * 5 + "Create New User" + "\n \n EU " + "-" * 5 + " Existing User \n",
+                fg=typer.colors.BRIGHT_YELLOW)
+
+    user_shortcode = input("").strip().lower()
+    if user_shortcode == "cu":
+        typer.secho("Register", bg=typer.colors.BRIGHT_GREEN, fg=typer.colors.BRIGHT_WHITE)
+        typer.secho("*^" * 30, fg=typer.colors.BRIGHT_CYAN)
+    username = input("Enter your username: ")
+    while True:
+        typer.secho("*" * 10, fg=typer.colors.BRIGHT_GREEN)
+        typer.secho("Select one of the following: \n \n UP --- To enter your own password "
+                    "\n AP --- To get a Automated generated password")
+        password_select = input().strip().lower()
+        if password_select == "up":
+            password = input("Enter your password \n")
+            break
+        elif password_select == "ap":
+            typer.secho("Enter the preferred length of the generated password, default is 10")
+            password_length = int(input())
+            password = password_generator(password_length)
+            break
+        else:
+            typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+
 
 
 if __name__ == '__main__':
