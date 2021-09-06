@@ -216,6 +216,28 @@ def main():
                 typer.secho("++" * 40, fg=typer.colors.BRIGHT_BLUE)
             else:
                 typer.secho("No Accounts saved currently", bg=typer.colors.BRIGHT_RED)
+        elif user_selection == "fa":
+            typer.secho("Enter the name of the account to search", fg=typer.colors.BRIGHT_YELLOW)
+            search_term = input().strip().lower()
+            if find_credentials(search_term):
+                search_account = find_credentials(search_term)
+                typer.secho(f"Account: {search_account}", fg=typer.colors.BRIGHT_GREEN)
+                typer.secho("**" * 40, fg=typer.colors.BRIGHT_BLUE)
+                typer.secho(f"User Name: {search_account.username}, Password: {search_account.password}")
+                typer.secho("**" * 40, fg=typer.colors.BRIGHT_BLUE)
+            else:
+                typer.secho("Account not found \n")
+
+        elif user_selection == "da":
+            typer.secho("Enter the account to delete : ", bg=typer.colors.BRIGHT_RED)
+            delete_credential = input().strip().lower()
+            if find_credentials(delete_credential):
+                account_search = find_credentials(delete_credential)
+                account_search.delete_credentials()
+                typer.secho(f"\n Account credentials for {account_search.account} deleted successfully \n",
+                            fg=typer.colors.BRIGHT_RED)
+            else:
+                typer.secho(f" \n Account credentials not found for {delete_credential} \n")
 
 
 
