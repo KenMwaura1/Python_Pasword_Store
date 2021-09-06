@@ -1,7 +1,7 @@
 # Python_Password_Store
 a password locker cli program to store account details, a login username and password. also, a password generator.
 
-![](assets/Screenshot 2021-09-06 14:01:02.png)
+![](assets/Screenshot-2021-09-06.png)
 
 ## Author
 
