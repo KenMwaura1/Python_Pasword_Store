@@ -77,6 +77,25 @@ def delete_credentials(credentials):
     """
     Credentials.delete_credentials(credentials)
 
+
+def check_credentials(account_name: str):
+    """
+    function to check if credentials exist in the list of credentials
+    :param account_name: string
+    :return: bool True if found,
+    """
+    return Credentials.credential_exists(account_name)
+
+
+def find_credentials(account_name: str):
+    """
+    function that takes an account name and returns the resultant credentials
+    :param account_name: string
+    :return: credentials of the search term
+    """
+    return Credentials.search_credentials(account_name)
+
+
 def main():
     """
 
