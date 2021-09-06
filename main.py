@@ -1,4 +1,6 @@
 #!/home/zoo/Documents/Moringa-projects/Python_Pasword_Store/venv/bin/python
+import sign as sign
+
 from credentials_class import Credentials
 from user_class import User
 import typer
@@ -165,7 +167,42 @@ def main():
         create_new_user_()
 
     elif user_shortcode == "eu":
-        typer.secho("")
+        typer.secho("^^" * 40, fg=typer.colors.BRIGHT_GREEN)
+        typer.secho(" Enter your username and password to sign in: \n ", fg=typer.colors.BRIGHT_MAGENTA)
+        typer.secho("~~" * 40, fg=typer.colors.BRIGHT_GREEN)
+        username = input(" Username --> : ")
+        password = input(" Password --> : ")
+        sign_in = user_login(username, password)
+        if user_login == sign_in:
+            typer.secho(f"Hey {username}. Welcome back! \n")
+
+    while True:
+        typer.secho("Select One of these shortcodes: \n CA ---> Create new account \n DA ---> Display Accounts \n"
+                    "FA ---> Find an Existing Account \n DA ---> Delete Account \n PG ---> Generate a random password "
+                    "\n EX ---> Exit the Password Locker ")
+        user_selection = input().strip().lower()
+        if user_selection == "ca":
+            typer.secho("Create New Credential", fg=typer.colors.BRIGHT_MAGENTA)
+            typer.secho("@" * 40, fg=typer.colors.YELLOW)
+            typer.secho("Account name ....", fg=typer.colors.BRIGHT_MAGENTA)
+            account = input().lower()
+            typer.secho("Your Account username", fg=typer.colors.BRIGHT_MAGENTA)
+            username = input()
+            while True:
+                typer.secho("Select one of the following: \n \n UP --- To enter your own password "
+                            "\n AP --- To get a Automated generated password", fg=typer.colors.BRIGHT_RED)
+                password_select = input().strip().lower()
+                if password_select == "up":
+                    password = input("Enter your own password:  \n ")
+                    break
+                elif password_select == "ap":
+                    typer.secho("Enter the preferred length of the generated password, default is 10")
+                    password_length = int(input())
+                    password = password_generator(password_length)
+                    break
+            else:
+                typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+
 
 
 if __name__ == '__main__':
