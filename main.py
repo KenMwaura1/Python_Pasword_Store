@@ -153,7 +153,11 @@ def main():
                     break
                 elif password_select == "ap":
                     typer.secho("Enter the preferred length of the generated password, default is 10")
-                    password_length = int(input())
+                    password_length = input().strip()
+                    if password_length == "":
+                        password_length = 10
+                    else:
+                        password_length = int(password_length)
                     password = password_generator(password_length)
                     break
                 else:
@@ -178,16 +182,16 @@ def main():
 
     while True:
         typer.secho("Select One of these shortcodes: \n CA ---> Create new account \n DA ---> Display Accounts \n"
-                    "FA ---> Find an Existing Account \n DA ---> Delete Account \n PG ---> Generate a random password "
+                    "FA ---> Find an Existing Account \n DEL ---> Delete Account \n PG ---> Generate a random password "
                     "\n EX ---> Exit the Password Locker ")
         user_selection = input().strip().lower()
         if user_selection == "ca":
             typer.secho("Create New Credential", fg=typer.colors.BRIGHT_MAGENTA)
             typer.secho("@" * 40, fg=typer.colors.YELLOW)
             typer.secho("Account name ....", fg=typer.colors.BRIGHT_MAGENTA)
-            account = input().lower()
+            account = input().lower().strip()
             typer.secho("Your Account username", fg=typer.colors.BRIGHT_MAGENTA)
-            username = input()
+            username = input().strip().lower()
             while True:
                 typer.secho("Select one of the following: \n \n UP --- To enter your own password "
                             "\n AP --- To get a Automated generated password", fg=typer.colors.BRIGHT_RED)
@@ -197,14 +201,20 @@ def main():
                     break
                 elif password_select == "ap":
                     typer.secho("Enter the preferred length of the generated password, default is 10")
-                    password_length = int(input())
+                    password_length = input().strip()
+                    if password_length == "":
+                        password_length = 10
+                    else:
+                        password_length = int(password_length)
                     password = password_generator(password_length)
+                    typer.secho(f"Password: {password} generated successfully!",
+                                fg=typer.colors.BRIGHT_GREEN)
                     break
                 else:
                     typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
-                save_credentials(create_new_credentials(account, username, password))
-                typer.secho(f"\n Account details  username:{username}, password:{password} "
-                            f"and account:{account} saved successfully  ")
+            save_credentials(create_new_credentials(username, password, account))
+            typer.secho(f"\n Account details  username:{username}, password:{password} "
+                        f"and account:{account} saved successfully!  ")
         elif user_selection == "da":
             if display_credentials():
                 typer.secho("Below is a list of accounts: ", fg=typer.colors.BRIGHT_MAGENTA)
@@ -221,14 +231,14 @@ def main():
             search_term = input().strip().lower()
             if find_credentials(search_term):
                 search_account = find_credentials(search_term)
-                typer.secho(f"Account: {search_account}", fg=typer.colors.BRIGHT_GREEN)
+                typer.secho(f"Account: {search_account.account}", fg=typer.colors.BRIGHT_GREEN)
                 typer.secho("**" * 40, fg=typer.colors.BRIGHT_BLUE)
                 typer.secho(f"User Name: {search_account.username}, Password: {search_account.password}")
                 typer.secho("**" * 40, fg=typer.colors.BRIGHT_BLUE)
             else:
                 typer.secho("Account not found \n")
 
-        elif user_selection == "da":
+        elif user_selection == "del":
             typer.secho("Enter the account to delete : ", bg=typer.colors.BRIGHT_RED)
             delete_credential = input().strip().lower()
             if find_credentials(delete_credential):
@@ -240,11 +250,11 @@ def main():
                 typer.secho(f" \n Account credentials not found for {delete_credential} \n", bg=typer.colors.YELLOW)
 
         elif user_selection == "pg":
-            auto_password_length = int(input("enter your preferred password length, default=10").strip())
+            auto_password_length = input("enter your preferred password length, default=10").strip()
             if auto_password_length == "":
                 auto_password = password_generator(10)
             else:
-                auto_password = password_generator(auto_password_length)
+                auto_password = password_generator(int(auto_password_length))
             typer.secho(f"Password: {auto_password} generated successfully. Add it to your account.",
                         fg=typer.colors.BRIGHT_GREEN)
         elif user_selection == "ex":
