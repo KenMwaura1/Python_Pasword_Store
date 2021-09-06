@@ -1,5 +1,5 @@
 #!/home/zoo/Documents/Moringa-projects/Python_Pasword_Store/venv/bin/python
-import sign as sign
+
 
 from credentials_class import Credentials
 from user_class import User
@@ -202,6 +202,28 @@ def main():
                     break
             else:
                 typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+            save_credentials(create_new_credentials(account, username, password))
+            typer.secho(f"\n Account details  username:{username}, password:{password} "
+                        f"and account:{account} saved successfully  ")
+        elif user_selection == "da":
+            if display_credentials():
+                typer.secho("Below is a list of accounts: ", fg=typer.colors.BRIGHT_MAGENTA)
+                typer.secho("++" * 40, fg=typer.colors.BRIGHT_BLUE)
+                for credential in display_credentials():
+                    typer.secho(f"Account: {credential.account} --> username: {credential.username} "
+                                f"--> password: {credential.password}", fg=typer.colors.BRIGHT_CYAN)
+                    typer.secho("``" * 30)
+                typer.secho("++" * 40, fg=typer.colors.BRIGHT_BLUE)
+            else:
+                typer.secho("No Accounts saved currently", bg=typer.colors.BRIGHT_RED)
+
+
+
+
+
+
+
+
 
 
 
