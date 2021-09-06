@@ -137,25 +137,35 @@ def main():
 
     user_shortcode = input("").strip().lower()
     if user_shortcode == "cu":
-        typer.secho("Register", bg=typer.colors.BRIGHT_GREEN, fg=typer.colors.BRIGHT_WHITE)
-        typer.secho("*^" * 30, fg=typer.colors.BRIGHT_CYAN)
-    username = input("Enter your username: ")
-    while True:
-        typer.secho("*" * 10, fg=typer.colors.BRIGHT_GREEN)
-        typer.secho("Select one of the following: \n \n UP --- To enter your own password "
-                    "\n AP --- To get a Automated generated password")
-        password_select = input().strip().lower()
-        if password_select == "up":
-            password = input("Enter your password \n")
-            break
-        elif password_select == "ap":
-            typer.secho("Enter the preferred length of the generated password, default is 10")
-            password_length = int(input())
-            password = password_generator(password_length)
-            break
-        else:
-            typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+        def create_new_user_():
+            typer.secho("Register", bg=typer.colors.BRIGHT_GREEN, fg=typer.colors.BRIGHT_WHITE)
+            typer.secho("*^" * 30, fg=typer.colors.BRIGHT_CYAN)
+            username = input("Enter your username: ")
+            while True:
+                typer.secho("*" * 10, fg=typer.colors.BRIGHT_GREEN)
+                typer.secho("Select one of the following: \n \n UP --- To enter your own password "
+                            "\n AP --- To get a Automated generated password")
+                password_select = input().strip().lower()
+                if password_select == "up":
+                    password = input("Enter your password \n")
+                    break
+                elif password_select == "ap":
+                    typer.secho("Enter the preferred length of the generated password, default is 10")
+                    password_length = int(input())
+                    password = password_generator(password_length)
+                    break
+                else:
+                    typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+            save_user(create_new_user(username, password))
+            typer.secho("##" * 40, fg=typer.colors.BRIGHT_GREEN)
+            typer.secho(f"Congratulations {username}, your account created successfully. Your Password is: {password}",
+                        fg=typer.colors.BRIGHT_BLUE)
+            typer.secho("##" * 40, fg=typer.colors.BRIGHT_GREEN)
 
+        create_new_user_()
+
+    elif user_shortcode == "eu":
+        typer.secho("")
 
 
 if __name__ == '__main__':
