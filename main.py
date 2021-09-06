@@ -96,6 +96,33 @@ def find_credentials(account_name: str):
     return Credentials.search_credentials(account_name)
 
 
+def password_generator(password_length=None):
+    """
+    function to generate password for the user
+    :param password_length: int
+    :return: generated password
+    """
+    return Credentials.password_generator(password_length)
+
+
+def password_copy(account_name: str):
+    """
+    function that takes an account name and copies the password to the clipboard using Pyperclip
+    :param account_name: string
+    :return: password copied to clipboard
+    """
+    return Credentials.copy_credentials_password(account_name)
+
+
+def username_copy(account_name: str):
+    """
+     function that takes an account name and copies the username to the clipboard using Pyperclip
+    :param account_name:string
+    :return: username copied to clipboard
+    """
+    return Credentials.copy_credentials_username(account_name)
+
+
 def main():
     """
 
