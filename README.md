@@ -1,5 +1,7 @@
 # Python_Password_Store
-a password locker account with my details, a login username and password.
+a password locker cli program to store account details, a login username and password. also, a password generator.
+![](assets/Screenshot 2021-09-06 14:01:02.png)
+
 ## Author
 
 [Ken Mwaura](https://github.com/KenMwaura1)
@@ -37,6 +39,9 @@ The user would like to.... :
 ### To execute tests 
 * `python3 credentials_class_test.py`
 * `python3 user_class_test.py`
+
+## Showcase
+![](assets/python-password-2.gif)
 
 ## Known Errors
 pressing enter on default_password_length breaks the app. 
