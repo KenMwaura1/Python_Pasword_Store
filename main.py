@@ -200,11 +200,11 @@ def main():
                     password_length = int(input())
                     password = password_generator(password_length)
                     break
-            else:
-                typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
-            save_credentials(create_new_credentials(account, username, password))
-            typer.secho(f"\n Account details  username:{username}, password:{password} "
-                        f"and account:{account} saved successfully  ")
+                else:
+                    typer.secho("Invalid Option selected, Kindly try again.", bg=typer.colors.BRIGHT_RED)
+                save_credentials(create_new_credentials(account, username, password))
+                typer.secho(f"\n Account details  username:{username}, password:{password} "
+                            f"and account:{account} saved successfully  ")
         elif user_selection == "da":
             if display_credentials():
                 typer.secho("Below is a list of accounts: ", fg=typer.colors.BRIGHT_MAGENTA)
@@ -237,16 +237,23 @@ def main():
                 typer.secho(f"\n Account credentials for {account_search.account} deleted successfully \n",
                             fg=typer.colors.BRIGHT_RED)
             else:
-                typer.secho(f" \n Account credentials not found for {delete_credential} \n")
+                typer.secho(f" \n Account credentials not found for {delete_credential} \n", bg=typer.colors.YELLOW)
 
-
-
-
-
-
-
-
-
+        elif user_selection == "pg":
+            auto_password_length = int(input("enter your preferred password length, default=10").strip())
+            if auto_password_length == "":
+                auto_password = password_generator(10)
+            else:
+                auto_password = password_generator(auto_password_length)
+            typer.secho(f"Password: {auto_password} generated successfully. Add it to your account.",
+                        fg=typer.colors.BRIGHT_GREEN)
+        elif user_selection == "ex":
+            typer.secho("Thank you for using Zoo Password Store! ")
+            break
+        else:
+            typer.secho("Selection not in list, Kindly confirm and try again", bg=typer.colors.BRIGHT_RED)
+    else:
+        typer.secho("Please select a valid input to continue")
 
 
 if __name__ == '__main__':
