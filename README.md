@@ -25,7 +25,7 @@ The user would like to.... :
 * git
 ### Installation from git 
 * Open your terminal
-* `git clone`
+* `git clone https://github.com/KenMwaura1/Python_Pasword_Store.git`
 * `cd Python_Pasword_Store`
 * Create a virtual environment. e.g. `python3 -m venv .`
 * Activate virtual environment `source venv/bin/activate`
